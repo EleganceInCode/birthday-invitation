@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на день рождения Кати</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="white" stroke-width="0.5" opacity="0.1"/></svg>');
+            padding: 40px 20px 20px;
+        }
+        
+        /* Заголовки */
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-top: 40px;
+            line-height: 1;
+        }
+        
+        .title-line-1 {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .title-line-2 {
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        /* Подзаголовки */
+        .subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        
+        .subtitle-line-1 {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle-line-2 {
+            display: block;
+            margin-bottom: 30px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #ccc;
+        }
+        
+        /* Изображение после приветствия */
+        .hero-image {
+            max-width: 350px;
+            width: 100%;
+            margin: 20px auto 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        /* Divider */
+        .divider {
+            width: 150px;
+            height: 2px;
+            background-color: #fff;
+            margin: 20px auto 30px;
+            position: relative;
+        }
+        
+        .divider::before, .divider::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            top: -4px;
+            border-radius: 50%;
+        }
+        
+        .divider::before {
+            left: 20px;
+        }
+        
+        .divider::after {
+            right: 20px;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background-color: #fff;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Details section - СЕТКА 2x2 */
+        .details {
+            background-color: #111;
+        }
+        
+        .details-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .detail-item {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .detail-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .detail-item i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .detail-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .detail-item p {
+            color: #ccc;
+            line-height: 1.5;
+        }
+        
+        /* Countdown */
+        .countdown {
+            text-align: center;
+            margin: 30px 0 40px;
+        }
+        
+        .countdown-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background-color: #111;
+            padding: 15px;
+            min-width: 80px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #aaa;
+        }
+        
+        /* RSVP section */
+        .rsvp {
+            background-color: #111;
+        }
+        
+        .rsvp-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .rsvp-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: #fff;
+            display: block;
+        }
+        
+        .rsvp-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .rsvp-description {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+        
+        .rsvp-button {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid #fff;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .rsvp-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .rsvp-button:hover:before {
+            left: 0;
+        }
+        
+        .rsvp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+        
+        .rsvp-footer {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .rsvp-footer p {
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.5;
+        }
+        
+        .checkmark {
+            color: #fff;
+            margin-right: 5px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #000;
+            border-top: 1px solid #333;
+        }
+        
+        .footer p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Decorative elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 5%;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 20%;
+            right: 8%;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 15%;
+            left: 10%;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 30px;
+            }
+            
+            .main-title {
+                font-size: 3rem;
+                margin-top: 20px;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+                letter-spacing: 5px;
+            }
+            
+            .hero-image {
+                max-width: 280px;
+                margin: 15px auto 20px;
+            }
+            
+            .hero-image img {
+                max-height: 250px;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .details-content {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, auto);
+                max-width: 400px;
+                gap: 20px;
+            }
+            
+            .detail-item {
+                min-height: 180px;
+                padding: 30px 15px;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 12px;
+            }
+            
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+            
+            .countdown-container {
+                gap: 10px;
+            }
+            
+            .rsvp-card {
+                padding: 40px 25px;
+                margin: 0 15px;
+            }
+            
+            .rsvp-button {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.5rem;
+                margin-top: 15px;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                letter-spacing: 3px;
+            }
+            
+            .hero-image {
+                max-width: 250px;
+                margin: 10px auto 15px;
+            }
+            
+            .hero-image img {
+                max-height: 220px;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
+            
+            .countdown-title {
+                font-size: 1.2rem;
+            }
+            
+            .countdown-item {
+                min-width: 65px;
+                padding: 10px;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .detail-item h3 {
+                font-size: 1.3rem;
+            }
+            
+            .detail-item i {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating decorative elements -->
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+    
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="main-title">
+                <span class="title-line-1">B-DAY</span>
+                <span class="title-line-2">PARTY</span>
+            </h1>
+            
+            <div class="divider"></div>
+            
+            <h2 class="subtitle">
+                <span class="subtitle-line-1">29/05/2026</span>
+                <span class="subtitle-line-2">Friends!</span>
+            </h2>
+            
+            <p>Буду рада вас видеть на моем дне рождения!</p>
+            
+            <!-- Добавьте ваше изображение здесь -->
+            <div class="hero-image">
+                <img src="kate-birthday.jpg" alt="Катя в день рождения">
+            </div>
+            
+            <div class="countdown">
+                <div class="countdown-title">До праздника осталось:</div>
+                <div class="countdown-container">
+                    <div class="countdown-item">
+                        <span id="days" class="countdown-number">00</span>
+                        <span class="countdown-label">Дней</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours" class="countdown-number">00</span>
+                        <span class="countdown-label">Часов</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes" class="countdown-number">00</span>
+                        <span class="countdown-label">Минут</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds" class="countdown-number">00</span>
+                        <span class="countdown-label">Секунд</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Details section - сетка 2x2 -->
+    <section class="section details">
+        <div class="container">
+            <h2 class="section-title">Детали события</h2>
+            
+            <!-- Первая строка: Дата и Время -->
+            <div class="details-content">
+                <div class="detail-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <h3>Дата</h3>
+                    <p>29 мая 2026 года</p>
+                </div>
+                
+                <div class="detail-item">
+                    <i class="far fa-clock"></i>
+                    <h3>Время</h3>
+                    <p>16:00</p>
+                </div>
+                
+                <!-- Вторая строка: Место и Дресс-код -->
+                <div class="detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Место</h3>
+                    <p>Стеклянный павильон<br>ул. Площадь Свободы, д.4В</p>
+                </div>
+                
+                <div class="detail-item">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Дресс-код</h3>
+                    <p>Черный</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RSVP section -->
+    <section class="section rsvp">
+        <div class="container">
+            <h2 class="section-title">Подтвердите участие</h2>
+            
+            <div class="rsvp-card">
+                <div class="rsvp-icon">
+                    <i class="far fa-edit"></i>
+                </div>
+                
+                <h3 class="rsvp-title">Заполните форму ответа</h3>
+                
+                <p class="rsvp-description">
+                    Нажмите на кнопку ниже, чтобы перейти к короткой форме.<br>
+                    Расскажите о своих предпочтениях в напитках и подтвердите участие.
+                </p>
+                
+                <!-- Вставьте вашу ссылку на Google Forms здесь -->
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDbORSwOSD83SPGvSJhI1vuenSv16IGZpzAR03DiiC_BKVZg/viewform" 
+                   target="_blank" 
+                   class="rsvp-button">
+                   Перейти к форме ответа
+                </a>
+                
+                <div class="rsvp-footer">
+                    <p>
+                        <span class="checkmark">✓</span> Форма откроется в новом окне<br>
+                        <span class="checkmark">✓</span> Данные придут прямо организаторам<br>
+                        <span class="checkmark">✓</span> Это поможет подготовить лучшую вечеринку
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>With love, Kate🤍. Жду каждого из вас на своём празднике!</p>
+            <p>По всем вопросам: +7 (XXX) XXX-XX-XX</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Создаем аудио
+            const music = new Audio('filiay.mp3');
+            music.loop = true;
+            music.volume = 0.3;
+            
+            // Создаем прозрачный overlay на всю страницу
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                z-index: 9999;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            `;
+            
+            overlay.innerHTML = `
+                <div style="
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 20px;
+                    padding: 40px 30px;
+                    text-align: center;
+                    max-width: 400px;
+                    margin: 20px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    backdrop-filter: blur(10px);
+                ">
+                    <div style="font-size: 3rem; margin-bottom: 20px; color: #fff;">♫</div>
+                    <h3 style="margin-bottom: 15px; color: #fff; font-size: 1.5rem;">Готовы к празднику?</h3>
+                    <p style="color: #ccc; margin-bottom: 25px; line-height: 1.5;">
+                        Коснитесь экрана, чтобы запустить праздничное настроение
+                    </p>
+                    <p style="font-size: 0.9rem; color: #aaa; margin-top: 20px;">
+                        (Музыка создаст атмосферу веселья)
+                    </p>
+                </div>
+            `;
+            
+            document.body.appendChild(overlay);
+            
+            // При клике по overlay включаем музыку и убираем его
+            overlay.addEventListener('click', function() {
+                music.play().then(() => {
+                    // Музыка пошла!
+                    overlay.style.opacity = '0';
+                    overlay.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => overlay.remove(), 500);
+                    
+                    // Теперь скролл будет контролировать громкость
+                    window.addEventListener('scroll', function() {
+                        const scrollPercent = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);
+                        music.volume = 0.2 + (scrollPercent * 0.5);
+                    });
+                }).catch(error => {
+                    console.log('Ошибка:', error);
+                    overlay.querySelector('h3').textContent = 'Упс! Что-то пошло не так';
+                    overlay.querySelector('p').innerHTML = 'Попробуйте обновить страницу<br>или дать разрешение на автовоспроизведение';
+                });
+            }, { once: true });
+            
+            // Обратный отсчет
+            const now = new Date();
+            const birthday = new Date(2026, 4, 29);
+            
+            function updateCountdown() {
+                const now = new Date();
+                const diff = birthday - now;
+                
+                if (diff < 0) {
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
+                }
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+            
+            // Анимация появления элементов при прокрутке
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.detail-item, .countdown-item, .rsvp-card').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
