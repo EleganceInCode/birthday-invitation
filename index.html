@@ -113,9 +113,10 @@
             display: block;
             max-height: 500px;
             object-fit: cover;
-            transition: transform 0.5s ease;
-            animation: photoBreathing 25s ease-in-out infinite;
-            transform-origin: center center;
+            animation: barelyVisiblePulse 25s infinite linear;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
         }
 
         .hero-image:hover img {
@@ -463,22 +464,22 @@
             left: 10%;
         }
 
-        @keyframes subtlePulse {
+        @keyframes barelyVisiblePulse {
             0%, 100% {
                 transform: scale(1);
-                filter: brightness(1);
+                opacity: 1;
             }
             25% {
-                transform: scale(1.02);
-                filter: brightness(1.02);
+                transform: scale(1.008);
+                opacity: 0.998;
             }
             50% {
                 transform: scale(1);
-                filter: brightness(1);
+                opacity: 1;
             }
             75% {
-                transform: scale(0.99);
-                filter: brightness(0.98);
+                transform: scale(0.995);
+                opacity: 0.998;
             }
         }
         
@@ -882,12 +883,6 @@
                     overlay.style.opacity = '0';
                     overlay.style.transition = 'opacity 0.5s ease';
                     setTimeout(() => overlay.remove(), 500);
-                    
-                    // Теперь скролл будет контролировать громкость
-                    window.addEventListener('scroll', function() {
-                        const scrollPercent = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);
-                        music.volume = 0.2 + (scrollPercent * 0.5);
-                    });
                 }).catch(error => {
                     console.log('Ошибка:', error);
                     overlay.querySelector('h3').textContent = 'Упс! Что-то пошло не так';
