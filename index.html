@@ -21,6 +21,7 @@
             color: #fff;
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
         
         .container {
@@ -29,20 +30,34 @@
             padding: 0 20px;
         }
         
-        /* Hero section */
+        /* Hero section - ФИКСИРОВАННЫЙ */
         .hero {
+            height: 100vh;
             min-height: 100vh;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
             text-align: center;
-            position: relative;
+            padding: 40px 20px 20px;
+            z-index: 1;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
             background: 
                 linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('fon.jpg') center/cover no-repeat;
-            padding: 40px 20px 20px;
-            overflow: hidden;
+                url('fon.jpg') center center no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            will-change: transform;
         }
         
         /* Заголовки */
@@ -58,6 +73,8 @@
             color: transparent;
             margin-top: 40px;
             line-height: 1;
+            position: relative;
+            z-index: 2;
         }
         
         .title-line-1 {
@@ -77,6 +94,8 @@
             letter-spacing: 8px;
             text-transform: uppercase;
             line-height: 1.2;
+            position: relative;
+            z-index: 2;
         }
         
         .subtitle-line-1 {
@@ -94,25 +113,30 @@
             max-width: 600px;
             margin: 0 auto 40px;
             color: #ccc;
+            position: relative;
+            z-index: 2;
         }
         
-        /* Изображение после приветствия */
+        /* Изображение после приветствия - ФИКСИРОВАННЫЙ РАЗМЕР */
         .hero-image {
-            max-width: 420px;
-            width: 100%;
+            width: 420px;
+            max-width: 90%;
+            height: 420px;
+            max-height: 50vh;
             margin: 20px auto 30px;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 3px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
         }
         
         .hero-image img {
             width: 100%;
-            height: auto;
-            display: block;
-            max-height: 500px;
+            height: 100%;
             object-fit: cover;
+            display: block;
             animation: barelyVisiblePulse 25s infinite linear;
             transform: translateZ(0);
             backface-visibility: hidden;
@@ -131,6 +155,7 @@
             background-color: #fff;
             margin: 20px auto 30px;
             position: relative;
+            z-index: 2;
         }
         
         .divider::before, .divider::after {
@@ -154,6 +179,9 @@
         /* Sections */
         .section {
             padding: 100px 0;
+            position: relative;
+            z-index: 3;
+            background: #111;
         }
         
         .section-title {
@@ -179,6 +207,18 @@
         /* Details section - СЕТКА 2x2 */
         .details {
             background-color: #111;
+            position: relative;
+        }
+        
+        .details::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #111);
+            pointer-events: none;
         }
         
         .details-content {
@@ -267,20 +307,22 @@
 
         .dress-code-item {
             display: inline-block;
-            margin: 0 10px; /* регулируйте отступы */
+            margin: 0 10px;
         }
 
         .separator {
-            margin: 0 3px; /* регулируйте отступы вокруг разделителя */
+            margin: 0 3px;
             opacity: 0.7;
-            font-size: 1.2em; /* или 1.5em, 2em - зависит от желаемого размера */
-            font-weight: bold; /* сделать жирнее */
+            font-size: 1.2em;
+            font-weight: bold;
         }
         
         /* Countdown */
         .countdown {
             text-align: center;
             margin: 30px 0 40px;
+            position: relative;
+            z-index: 2;
         }
         
         .countdown-title {
@@ -297,11 +339,12 @@
         }
         
         .countdown-item {
-            background-color: #111;
+            background-color: rgba(17, 17, 17, 0.8);
             padding: 15px;
             min-width: 80px;
             border-radius: 5px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
         }
         
         .countdown-number {
@@ -416,7 +459,7 @@
         .footer {
             text-align: center;
             padding: 40px 0;
-            background-color: #000;
+            background-color: #111;
             border-top: 1px solid #333;
         }
         
@@ -427,14 +470,14 @@
         
         /* Decorative elements */
         .floating-elements {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
             overflow: hidden;
-            z-index: -1;
+            z-index: 0;
         }
         
         .floating-element {
@@ -486,22 +529,25 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
+                height: 100vh;
                 min-height: 100vh;
                 min-height: -webkit-fill-available;
                 padding: 20px 15px 15px;
-                background-attachment: fixed;
-                background-size: cover;
+            }
+
+            .hero-bg {
+                background-attachment: scroll;
             }
 
             .hero-image {
-                max-width: 90%;
                 width: 320px;
-                margin: 30px auto;
+                height: 320px;
+                max-width: 85vw;
+                max-height: 40vh;
             }
     
             .hero-image img {
-                max-height: 50vh;
-                max-height: 300px;
+                max-height: none;
             }
 
             .main-title {
@@ -514,12 +560,7 @@
             }
             
             .hero-image {
-                max-width: 280px;
                 margin: 15px auto 20px;
-            }
-            
-            .hero-image img {
-                max-height: 250px;
             }
             
             .section {
@@ -600,23 +641,23 @@
             }
 
             .hero {
+                height: 100vh;
                 min-height: 100vh;
                 min-height: -webkit-fill-available;
                 padding: 15px 10px 10px;
-                background-size: cover;
-                background-position: center center;
             }
             
             .hero-image {
-                max-width: 90vw;
                 width: 280px;
+                height: 280px;
+                max-width: 90vw;
+                max-height: 35vh;
                 margin: 10px auto 15px;
             }
             
             .hero-image img {
-                max-height: 60vh;
-                max-height: 350px;
-                min-height: 220px;
+                max-height: none;
+                min-height: 0;
             }
             
             .hero p {
@@ -668,6 +709,10 @@
                 min-height: -webkit-fill-available;
                 height: -webkit-fill-available;
             }
+            
+            .hero-bg {
+                background-attachment: scroll;
+            }
         }
     </style>
 </head>
@@ -681,6 +726,7 @@
     
     <!-- Hero section -->
     <section class="hero">
+        <div class="hero-bg"></div>
         <div class="container">
             <h1 class="main-title">
                 <span class="title-line-1">B-DAY</span>
@@ -938,6 +984,20 @@
                 item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                 observer.observe(item);
             });
+            
+            // Фикс для фонового изображения на мобильных устройствах
+            function fixMobileBackground() {
+                const heroBg = document.querySelector('.hero-bg');
+                if (window.innerWidth <= 768) {
+                    // На мобильных отключаем fixed attachment для лучшей производительности
+                    heroBg.style.backgroundAttachment = 'scroll';
+                } else {
+                    heroBg.style.backgroundAttachment = 'fixed';
+                }
+            }
+            
+            window.addEventListener('resize', fixMobileBackground);
+            fixMobileBackground();
         });
     </script>
 </body>
