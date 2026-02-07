@@ -270,7 +270,7 @@
         }
 
         .separator {
-            margin: 0 3px; /* регулируйте отступы вокруг разделителя */
+            margin: 0 1px; /* регулируйте отступы вокруг разделителя */
             opacity: 0.7;
             font-size: 1.2em; /* или 1.5em, 2em - зависит от желаемого размера */
             font-weight: bold; /* сделать жирнее */
@@ -485,7 +485,31 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
-                padding-top: 30px;
+                 min-height: auto;
+                 height: auto;
+                 padding-top: 20px;
+                 padding-bottom: 40px;
+                 overflow: visible;
+            }
+
+            .hero .container {
+                display: flex;
+                flex-direction: column;
+            }
+
+             .countdown {
+                margin-top: auto;
+                margin-bottom: 20px;
+                order: 5;
+            }
+             
+            .main-title,
+            .subtitle,
+            .hero p,
+            .hero-image,
+            .divider {
+                position: relative;
+                z-index: 1;
             }
 
             .main-title {
