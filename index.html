@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приглашение на день рождения Кати</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,52 +14,37 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Raleway', sans-serif;
             background-color: #000;
             color: #fff;
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Hero section - ФИКСИРОВАННЫЙ */
+
+        /* Hero section */
         .hero {
-            height: 100vh;
             min-height: 100vh;
-            position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
             text-align: center;
-            padding: 40px 20px 20px;
-            z-index: 1;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            position: relative;
             background: 
                 linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('fon.jpg') center center no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            will-change: transform;
+                url('fon.jpg') center/cover no-repeat;
+            padding: 40px 20px 20px;
+            overflow: hidden;
         }
-        
+
         /* Заголовки */
         .main-title {
             font-family: 'Playfair Display', serif;
@@ -73,20 +58,18 @@
             color: transparent;
             margin-top: 40px;
             line-height: 1;
-            position: relative;
-            z-index: 2;
         }
-        
+
         .title-line-1 {
             display: block;
             margin-bottom: 5px;
         }
-        
+
         .title-line-2 {
             display: block;
             margin-bottom: 20px;
         }
-        
+
         /* Подзаголовки */
         .subtitle {
             font-size: 1.8rem;
@@ -94,53 +77,45 @@
             letter-spacing: 8px;
             text-transform: uppercase;
             line-height: 1.2;
-            position: relative;
-            z-index: 2;
         }
-        
+
         .subtitle-line-1 {
             display: block;
             margin-bottom: 10px;
         }
-        
+
         .subtitle-line-2 {
             display: block;
             margin-bottom: 30px;
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto 40px;
             color: #ccc;
-            position: relative;
-            z-index: 2;
         }
-        
-        /* Изображение после приветствия - ФИКСИРОВАННЫЙ РАЗМЕР */
+
+        /* Изображение после приветствия */
         .hero-image {
-            width: 420px;
-            max-width: 90%;
-            height: 420px;
-            max-height: 50vh;
+            max-width: 420px;
+            width: 100%;
             margin: 20px auto 30px;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 3px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            z-index: 2;
         }
-        
+
         .hero-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block;
-            animation: barelyVisiblePulse 25s infinite linear;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            -webkit-font-smoothing: subpixel-antialiased;
+            max-height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            animation: photoBreathing 25s ease-in-out infinite;
+            transform-origin: center center;
         }
 
         .hero-image:hover img {
@@ -155,9 +130,8 @@
             background-color: #fff;
             margin: 20px auto 30px;
             position: relative;
-            z-index: 2;
         }
-        
+
         .divider::before, .divider::after {
             content: '';
             position: absolute;
@@ -167,23 +141,20 @@
             top: -4px;
             border-radius: 50%;
         }
-        
+
         .divider::before {
             left: 20px;
         }
-        
+
         .divider::after {
             right: 20px;
         }
-        
+
         /* Sections */
         .section {
             padding: 100px 0;
-            position: relative;
-            z-index: 3;
-            background: #111;
         }
-        
+
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
@@ -192,7 +163,7 @@
             letter-spacing: 2px;
             position: relative;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -203,24 +174,12 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        
+
         /* Details section - СЕТКА 2x2 */
         .details {
             background-color: #111;
-            position: relative;
         }
-        
-        .details::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, #111);
-            pointer-events: none;
-        }
-        
+
         .details-content {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -237,7 +196,7 @@
             width: 100%;
             text-align: center;
         }
-        
+
         .detail-item {
             text-align: center;
             padding: 40px 20px;
@@ -281,25 +240,25 @@
             color: #ccc;
             letter-spacing: 0.5px;
         }
-        
+
         .detail-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             border-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         .detail-item i {
             font-size: 2.5rem;
             margin-bottom: 20px;
             color: #fff;
         }
-        
+
         .detail-item h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
             font-weight: 500;
         }
-        
+
         .detail-item p {
             color: #ccc;
             line-height: 1.5;
@@ -307,65 +266,62 @@
 
         .dress-code-item {
             display: inline-block;
-            margin: 0 10px;
+            margin: 0 10px; /* регулируйте отступы */
         }
 
         .separator {
-            margin: 0 3px;
+            margin: 0 3px; /* регулируйте отступы вокруг разделителя */
             opacity: 0.7;
-            font-size: 1.2em;
-            font-weight: bold;
+            font-size: 1.2em; /* или 1.5em, 2em - зависит от желаемого размера */
+            font-weight: bold; /* сделать жирнее */
         }
-        
+
         /* Countdown */
         .countdown {
             text-align: center;
             margin: 30px 0 40px;
-            position: relative;
-            z-index: 2;
         }
-        
+
         .countdown-title {
             font-size: 1.5rem;
             margin-bottom: 20px;
             color: #ccc;
         }
-        
+
         .countdown-container {
             display: flex;
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
         }
-        
+
         .countdown-item {
-            background-color: rgba(17, 17, 17, 0.8);
+            background-color: #111;
             padding: 15px;
             min-width: 80px;
             border-radius: 5px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
         }
-        
+
         .countdown-number {
             font-size: 2rem;
             font-weight: 700;
             display: block;
             margin-bottom: 5px;
         }
-        
+
         .countdown-label {
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #aaa;
         }
-        
+
         /* RSVP section */
         .rsvp {
             background-color: #111;
         }
-        
+
         .rsvp-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
@@ -377,28 +333,28 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
-        
+
         .rsvp-icon {
             font-size: 3rem;
             margin-bottom: 25px;
             color: #fff;
             display: block;
         }
-        
+
         .rsvp-title {
             font-size: 1.8rem;
             margin-bottom: 20px;
             color: #fff;
             font-family: 'Playfair Display', serif;
         }
-        
+
         .rsvp-description {
             font-size: 1.1rem;
             color: #ccc;
             margin-bottom: 35px;
             line-height: 1.6;
         }
-        
+
         .rsvp-button {
             display: inline-block;
             background: transparent;
@@ -415,7 +371,7 @@
             overflow: hidden;
             z-index: 1;
         }
-        
+
         .rsvp-button:before {
             content: '';
             position: absolute;
@@ -427,79 +383,79 @@
             transition: all 0.4s ease;
             z-index: -1;
         }
-        
+
         .rsvp-button:hover:before {
             left: 0;
         }
-        
+
         .rsvp-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
             border-color: #fff;
         }
-        
+
         .rsvp-footer {
             margin-top: 40px;
             padding-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .rsvp-footer p {
             font-size: 0.9rem;
             color: #aaa;
             line-height: 1.5;
         }
-        
+
         .checkmark {
             color: #fff;
             margin-right: 5px;
         }
-        
+
         /* Footer */
         .footer {
             text-align: center;
             padding: 40px 0;
-            background-color: #111;
+            background-color: #000;
             border-top: 1px solid #333;
         }
-        
+
         .footer p {
             color: #aaa;
             font-size: 0.9rem;
         }
-        
+
         /* Decorative elements */
         .floating-elements {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
             overflow: hidden;
-            z-index: 0;
+            z-index: -1;
         }
-        
+
         .floating-element {
             position: absolute;
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
         }
-        
+
         .floating-element:nth-child(1) {
             width: 80px;
             height: 80px;
             top: 10%;
             left: 5%;
         }
-        
+
         .floating-element:nth-child(2) {
             width: 120px;
             height: 120px;
             top: 20%;
             right: 8%;
         }
-        
+
         .floating-element:nth-child(3) {
             width: 60px;
             height: 60px;
@@ -507,80 +463,68 @@
             left: 10%;
         }
 
-        @keyframes barelyVisiblePulse {
+        @keyframes subtlePulse {
             0%, 100% {
                 transform: scale(1);
-                opacity: 1;
+                filter: brightness(1);
             }
             25% {
-                transform: scale(1.008);
-                opacity: 0.998;
+                transform: scale(1.02);
+                filter: brightness(1.02);
             }
             50% {
                 transform: scale(1);
-                opacity: 1;
+                filter: brightness(1);
             }
             75% {
-                transform: scale(0.995);
-                opacity: 0.998;
+                transform: scale(0.99);
+                filter: brightness(0.98);
             }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
-                height: 100vh;
-                min-height: 100vh;
-                min-height: -webkit-fill-available;
-                padding: 20px 15px 15px;
-            }
-
-            .hero-bg {
-                background-attachment: scroll;
-            }
-
-            .hero-image {
-                width: 320px;
-                height: 320px;
-                max-width: 85vw;
-                max-height: 40vh;
-            }
-    
-            .hero-image img {
-                max-height: none;
+                padding-top: 30px;
             }
 
             .main-title {
-                font-size: 3.5rem;
+                font-size: 3rem;
                 margin-top: 20px;
             }
-            
+
             .subtitle {
-                font-size: 1.6rem;
+                font-size: 1.3rem;
+                letter-spacing: 5px;
             }
-            
+
             .hero-image {
+                max-width: 280px;
                 margin: 15px auto 20px;
             }
-            
+
+            .hero-image img {
+                max-height: 250px;
+            }
+
             .section {
                 padding: 70px 0;
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
-            
+
             .details-content {
                 grid-template-columns: 1fr;
                 grid-template-rows: repeat(5, auto);
-                max-width: 95%;
-                gap: 15px;
+                max-width: 400px;
+                gap: 20px;
             }
-            
+
             .detail-item {
-                min-height: 160px;
-                padding: 25px 15px;
+                min-height: 180px;
+                padding: 30px 15px;
             }
 
 
@@ -599,119 +543,83 @@
                 margin-right: 12px;
                 font-size: 1.1rem;
             }
-            
+
             .countdown-item {
                 min-width: 70px;
-                padding: 12px 8px;
+                padding: 12px;
             }
-            
+
             .countdown-number {
                 font-size: 1.8rem;
             }
-            
+
             .countdown-container {
-                gap: 8px;
+                gap: 10px;
             }
 
-            .countdown-title {
-                font-size: 1.3rem;
-                margin-bottom: 15px;
-            }
-            
             .rsvp-card {
                 padding: 40px 25px;
                 margin: 0 15px;
             }
-            
+
             .rsvp-button {
                 padding: 15px 35px;
                 font-size: 1rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .main-title {
-                font-size: 2.8rem;
-                margin-top: 5px;
+                font-size: 2.5rem;
+                margin-top: 15px;
             }
-            
+
             .subtitle {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 letter-spacing: 3px;
             }
 
-            .hero {
-                height: 100vh;
-                min-height: 100vh;
-                min-height: -webkit-fill-available;
-                padding: 15px 10px 10px;
-            }
-            
             .hero-image {
-                width: 280px;
-                height: 280px;
-                max-width: 90vw;
-                max-height: 35vh;
+                max-width: 250px;
                 margin: 10px auto 15px;
             }
-            
+
             .hero-image img {
-                max-height: none;
-                min-height: 0;
+                max-height: 220px;
             }
-            
+
             .hero p {
                 font-size: 1rem;
+                margin-bottom: 25px;
             }
-            
+
             .countdown-title {
                 font-size: 1.2rem;
             }
-            
+
             .countdown-item {
                 min-width: 65px;
                 padding: 10px;
             }
-            
+
             .countdown-number {
                 font-size: 1.5rem;
             }
-            
+
             .countdown-label {
                 font-size: 0.7rem;
             }
-            
+
             .section-title {
                 font-size: 1.8rem;
             }
 
-            .details-content {
-                max-width: 100%;
-                gap: 12px;
-            }
-            
-            .detail-item {
-                min-height: 150px;
-                padding: 20px 10px;
-            }
-            
             .detail-item h3 {
                 font-size: 1.3rem;
             }
-            
+
             .detail-item i {
                 font-size: 2rem;
-            }
-        }
-
-        @supports (-webkit-touch-callout: none) {
-            .hero {
-                min-height: -webkit-fill-available;
-                height: -webkit-fill-available;
-            }
-            
-            .hero-bg {
-                background-attachment: scroll;
             }
         }
     </style>
@@ -723,30 +631,29 @@
         <div class="floating-element"></div>
         <div class="floating-element"></div>
     </div>
-    
+
     <!-- Hero section -->
     <section class="hero">
-        <div class="hero-bg"></div>
         <div class="container">
             <h1 class="main-title">
                 <span class="title-line-1">B-DAY</span>
                 <span class="title-line-2">PARTY</span>
             </h1>
-            
+
             <div class="divider"></div>
-            
+
             <h2 class="subtitle">
                 <span class="subtitle-line-1">29/05/2026</span>
                 <span class="subtitle-line-2">Friends!</span>
             </h2>
-            
+
             <p>Буду рада вас видеть на моем дне рождения!</p>
-            
+
             <!-- Добавьте ваше изображение здесь -->
             <div class="hero-image">
                 <img src="kate-birthday.jpg" alt="Катя в день рождения">
             </div>
-            
+
             <div class="countdown">
                 <div class="countdown-title">До праздника осталось:</div>
                 <div class="countdown-container">
@@ -770,7 +677,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Details section - сетка 2x2 -->
  <section class="section details">
     <div class="container">
@@ -828,31 +735,31 @@
         </div>
     </div>
  </section>
-    
+
     <!-- RSVP section -->
     <section class="section rsvp">
         <div class="container">
             <h2 class="section-title">Подтвердите участие</h2>
-            
+
             <div class="rsvp-card">
                 <div class="rsvp-icon">
                     <i class="far fa-edit"></i>
                 </div>
-                
+
                 <h3 class="rsvp-title">Заполните форму ответа</h3>
-                
+
                 <p class="rsvp-description">
                     Нажмите на кнопку ниже, чтобы перейти к короткой форме.<br>
                     Расскажите о своих предпочтениях в напитках и подтвердите участие.
                 </p>
-                
+
                 <!-- Вставьте вашу ссылку на Google Forms здесь -->
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDbORSwOSD83SPGvSJhI1vuenSv16IGZpzAR03DiiC_BKVZg/viewform" 
                    target="_blank" 
                    class="rsvp-button">
                    Перейти к форме ответа
                 </a>
-                
+
                 <div class="rsvp-footer">
                     <p>
                         <span class="checkmark">✓</span> Форма откроется в новом окне<br>
@@ -863,7 +770,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -871,14 +778,14 @@
             <p>По всем вопросам: +7 (926) 173-41-90</p>
         </div>
     </footer>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Создаем аудио
             const music = new Audio('do_it_right.mp3');
             music.loop = true;
             music.volume = 0.3;
-            
+
             // Создаем прозрачный overlay на всю страницу
             const overlay = document.createElement('div');
             overlay.style.cssText = `
@@ -894,7 +801,7 @@
                 justify-content: center;
                 align-items: center;
             `;
-            
+
             overlay.innerHTML = `
                 <div style="
                     background: rgba(255, 255, 255, 0.1);
@@ -916,9 +823,9 @@
                     </p>
                 </div>
             `;
-            
+
             document.body.appendChild(overlay);
-            
+
             // При клике по overlay включаем музыку и убираем его
             overlay.addEventListener('click', function() {
                 music.play().then(() => {
@@ -926,21 +833,27 @@
                     overlay.style.opacity = '0';
                     overlay.style.transition = 'opacity 0.5s ease';
                     setTimeout(() => overlay.remove(), 500);
+
+                    // Теперь скролл будет контролировать громкость
+                    window.addEventListener('scroll', function() {
+                        const scrollPercent = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);
+                        music.volume = 0.2 + (scrollPercent * 0.5);
+                    });
                 }).catch(error => {
                     console.log('Ошибка:', error);
                     overlay.querySelector('h3').textContent = 'Упс! Что-то пошло не так';
                     overlay.querySelector('p').innerHTML = 'Попробуйте обновить страницу<br>или дать разрешение на автовоспроизведение';
                 });
             }, { once: true });
-            
+
             // Обратный отсчет
             const now = new Date();
             const birthday = new Date(2026, 4, 29);
-            
+
             function updateCountdown() {
                 const now = new Date();
                 const diff = birthday - now;
-                
+
                 if (diff < 0) {
                     document.getElementById('days').textContent = '00';
                     document.getElementById('hours').textContent = '00';
@@ -948,27 +861,27 @@
                     document.getElementById('seconds').textContent = '00';
                     return;
                 }
-                
+
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                
+
                 document.getElementById('days').textContent = days.toString().padStart(2, '0');
                 document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
                 document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
                 document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
             }
-            
+
             setInterval(updateCountdown, 1000);
             updateCountdown();
-            
+
             // Анимация появления элементов при прокрутке
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
             };
-            
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -977,28 +890,13 @@
                     }
                 });
             }, observerOptions);
-            
+
             document.querySelectorAll('.detail-item, .countdown-item, .rsvp-card').forEach(item => {
                 item.style.opacity = '0';
                 item.style.transform = 'translateY(20px)';
                 item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                 observer.observe(item);
             });
-            
-            // Фикс для фонового изображения на мобильных устройствах
-            function fixMobileBackground() {
-                const heroBg = document.querySelector('.hero-bg');
-                if (window.innerWidth <= 768) {
-                    // На мобильных отключаем fixed attachment для лучшей производительности
-                    heroBg.style.backgroundAttachment = 'scroll';
-                } else {
-                    heroBg.style.backgroundAttachment = 'fixed';
-                }
-            }
-            
-            window.addEventListener('resize', fixMobileBackground);
-            fixMobileBackground();
         });
     </script>
 </body>
-</html>
