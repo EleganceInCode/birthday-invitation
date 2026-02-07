@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Приглашение на день рождения Кати</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -485,16 +485,33 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
-                padding-top: 30px;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+                padding: 20px 15px 15px;
+                background-attachment: scroll;
+                background-size: cover;
             }
-            
+
+            .hero-image {
+                max-width: 85vw;
+                width: 320px;
+                margin: 15px auto 20px;
+                max-width: 350px; 
+            }
+    
+            .hero-image img {
+                max-height: 70vh;
+                max-height: 400px;
+                min-height: 250px;
+            }
+
             .main-title {
-                font-size: 3rem;
-                margin-top: 20px;
+                font-size: 3.2rem;
+                margin-top: 10px;
             }
             
             .subtitle {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
                 letter-spacing: 5px;
             }
             
@@ -518,13 +535,13 @@
             .details-content {
                 grid-template-columns: 1fr;
                 grid-template-rows: repeat(5, auto);
-                max-width: 400px;
-                gap: 20px;
+                max-width: 95%;
+                gap: 15px;
             }
             
             .detail-item {
-                min-height: 180px;
-                padding: 30px 15px;
+                min-height: 160px;
+                padding: 25px 15px;
             }
 
 
@@ -546,7 +563,7 @@
             
             .countdown-item {
                 min-width: 70px;
-                padding: 12px;
+                padding: 12px 8px;
             }
             
             .countdown-number {
@@ -554,7 +571,12 @@
             }
             
             .countdown-container {
-                gap: 10px;
+                gap: 8px;
+            }
+
+            .countdown-title {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
             }
             
             .rsvp-card {
@@ -570,27 +592,37 @@
         
         @media (max-width: 480px) {
             .main-title {
-                font-size: 2.5rem;
-                margin-top: 15px;
+                font-size: 2.8rem;
+                margin-top: 5px;
             }
             
             .subtitle {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
                 letter-spacing: 3px;
+            }
+
+            .hero {
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+                padding: 15px 10px 10px;
+                background-size: cover;
+                background-position: center center;
             }
             
             .hero-image {
-                max-width: 250px;
+                max-width: 90vw;
+                width: 280px;
                 margin: 10px auto 15px;
             }
             
             .hero-image img {
-                max-height: 220px;
+                max-height: 60vh;
+                max-height: 350px;
+                min-height: 220px;
             }
             
             .hero p {
                 font-size: 1rem;
-                margin-bottom: 25px;
             }
             
             .countdown-title {
@@ -613,6 +645,16 @@
             .section-title {
                 font-size: 1.8rem;
             }
+
+            .details-content {
+                max-width: 100%;
+                gap: 12px;
+            }
+            
+            .detail-item {
+                min-height: 150px;
+                padding: 20px 10px;
+            }
             
             .detail-item h3 {
                 font-size: 1.3rem;
@@ -620,6 +662,13 @@
             
             .detail-item i {
                 font-size: 2rem;
+            }
+        }
+
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                min-height: -webkit-fill-available;
+                height: -webkit-fill-available;
             }
         }
     </style>
