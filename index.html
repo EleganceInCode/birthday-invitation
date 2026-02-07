@@ -31,18 +31,9 @@
 
         /* Hero section */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            background: 
-                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('fon.jpg') center/cover no-repeat;
-            padding: 40px 20px 20px;
-            overflow: hidden;
+            min-height: 100svh;
+            min-height: -webkit-fill-available;
+            padding-bottom: 40px;
         }
 
         /* Заголовки */
@@ -485,14 +476,18 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
-                min-height: auto;
-                height: auto;
-                padding-top: 20px;
-                padding-bottom: 40px;
-                overflow: visible;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                text-align: center;
+                position: relative;
                 background: 
                     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                    url('fon.jpg') center 30%/150% 100%no-repeat; 
+                    url('fon.jpg') center/cover no-repeat;
+                padding: 40px 20px 20px;
+                overflow: hidden;
             }
 
             .hero .container {
