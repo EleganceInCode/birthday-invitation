@@ -31,9 +31,21 @@
 
         /* Hero section */
         .hero {
-            min-height: 100svh;
-            min-height: -webkit-fill-available;
-            padding-bottom: 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('fon.jpg');
+            background-position: center, 40% 30%; /* Первое для градиента, второе для фото */
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 40px 20px 20px;
+            overflow: hidden;
         }
 
         /* Заголовки */
@@ -261,7 +273,7 @@
         }
 
         .separator {
-            margin: 0 1px; /* регулируйте отступы вокруг разделителя */
+            margin: 0 3px; /* регулируйте отступы вокруг разделителя */
             opacity: 0.7;
             font-size: 1.2em; /* или 1.5em, 2em - зависит от желаемого размера */
             font-weight: bold; /* сделать жирнее */
@@ -476,31 +488,24 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
-                min-height: 200vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                text-align: center;
-                position: relative;
-                background: 
-                    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                    url('fon.jpg') center/cover no-repeat;
-                padding: 40px 20px 20px;
-                overflow: hidden;
+                min-height: auto;
+                height: auto;
+                padding-top: 20px;
+                padding-bottom: 40px;
+                overflow: visible;
             }
 
             .hero .container {
-                display: flex;
-                flex-direction: column;
+               display: flex;
+               flex-direction: column;
             }
-
-             .countdown {
-                margin-top: auto;
-                margin-bottom: 20px;
-                order: 5;
+           
+            .countdown {
+               margin-top: auto;
+               margin-bottom: 20px;
+               order: 5;
             }
-             
+           
             .main-title,
             .subtitle,
             .hero p,
