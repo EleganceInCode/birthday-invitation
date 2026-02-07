@@ -38,8 +38,11 @@
             align-items: center;
             text-align: center;
             position: relative;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="white" stroke-width="0.5" opacity="0.1"/></svg>');
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('fon.jpg') center/cover no-repeat;
             padding: 40px 20px 20px;
+            overflow: hidden;
         }
         
         /* Заголовки */
@@ -95,7 +98,7 @@
         
         /* Изображение после приветствия */
         .hero-image {
-            max-width: 350px;
+            max-width: 420px;
             width: 100%;
             margin: 20px auto 30px;
             border-radius: 10px;
@@ -108,15 +111,18 @@
             width: 100%;
             height: auto;
             display: block;
-            max-height: 300px;
+            max-height: 500px;
             object-fit: cover;
             transition: transform 0.5s ease;
+            animation: photoBreathing 25s ease-in-out infinite;
+            transform-origin: center center;
         }
-        
+
         .hero-image:hover img {
+            animation-play-state: paused;
             transform: scale(1.03);
         }
-        
+
         /* Divider */
         .divider {
             width: 150px;
@@ -177,10 +183,18 @@
         .details-content {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, auto);
+            grid-template-rows: auto auto auto;
             gap: 30px;
             max-width: 800px;
             margin: 0 auto;
+        }
+
+        .format-item {
+            grid-column: span 2;
+            max-width: 400px;
+            margin: 0 auto; 
+            width: 100%;
+            text-align: center;
         }
         
         .detail-item {
@@ -195,6 +209,36 @@
             justify-content: center;
             min-height: 200px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .party-format {
+            text-align: center;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        .format-line {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dash {
+            margin-right: 15px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            min-width: 20px;
+        }
+        
+        .format-text {
+            color: #ccc;
+            letter-spacing: 0.5px;
         }
         
         .detail-item:hover {
@@ -218,6 +262,18 @@
         .detail-item p {
             color: #ccc;
             line-height: 1.5;
+        }
+
+        .dress-code-item {
+            display: inline-block;
+            margin: 0 10px; /* регулируйте отступы */
+        }
+
+        .separator {
+            margin: 0 3px; /* регулируйте отступы вокруг разделителя */
+            opacity: 0.7;
+            font-size: 1.2em; /* или 1.5em, 2em - зависит от желаемого размера */
+            font-weight: bold; /* сделать жирнее */
         }
         
         /* Countdown */
@@ -406,6 +462,25 @@
             bottom: 15%;
             left: 10%;
         }
+
+        @keyframes subtlePulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            25% {
+                transform: scale(1.02);
+                filter: brightness(1.02);
+            }
+            50% {
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            75% {
+                transform: scale(0.99);
+                filter: brightness(0.98);
+            }
+        }
         
         /* Responsive */
         @media (max-width: 768px) {
@@ -442,7 +517,7 @@
             
             .details-content {
                 grid-template-columns: 1fr;
-                grid-template-rows: repeat(4, auto);
+                grid-template-rows: repeat(5, auto);
                 max-width: 400px;
                 gap: 20px;
             }
@@ -450,6 +525,23 @@
             .detail-item {
                 min-height: 180px;
                 padding: 30px 15px;
+            }
+
+
+            .format-item {
+                grid-column: span 1;
+                max-width: 100%;
+            }
+            
+            .format-line {
+                justify-content: center;
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            
+            .dash {
+                margin-right: 12px;
+                font-size: 1.1rem;
             }
             
             .countdown-item {
@@ -587,39 +679,62 @@
     </section>
     
     <!-- Details section - сетка 2x2 -->
-    <section class="section details">
-        <div class="container">
-            <h2 class="section-title">Детали события</h2>
+ <section class="section details">
+    <div class="container">
+        <h2 class="section-title">Детали события</h2>
+        
+        <div class="details-content">
+
+            <div class="detail-item">
+                <i class="far fa-calendar-alt"></i>
+                <h3>Дата</h3>
+                <p>29 мая 2026 года</p>
+            </div>
             
-            <!-- Первая строка: Дата и Время -->
-            <div class="details-content">
-                <div class="detail-item">
-                    <i class="far fa-calendar-alt"></i>
-                    <h3>Дата</h3>
-                    <p>29 мая 2026 года</p>
-                </div>
-                
-                <div class="detail-item">
-                    <i class="far fa-clock"></i>
-                    <h3>Время</h3>
-                    <p>16:00</p>
-                </div>
-                
-                <!-- Вторая строка: Место и Дресс-код -->
-                <div class="detail-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Место</h3>
-                    <p>Стеклянный павильон<br>ул. Площадь Свободы, д.4В</p>
-                </div>
-                
-                <div class="detail-item">
-                    <i class="fas fa-tshirt"></i>
-                    <h3>Дресс-код</h3>
-                    <p>Черный</p>
+            <div class="detail-item">
+                <i class="far fa-clock"></i>
+                <h3>Время</h3>
+                <p>16:00</p>
+            </div>
+            
+            <div class="detail-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Место</h3>
+                <p>Стеклянный павильон<br>ул. Площадь Свободы, д.4В</p>
+            </div>
+            
+            <div class="detail-item">
+                <i class="fas fa-tshirt"></i>
+                <h3>DRESS-CODE</h3>
+                <p>
+                    <span class="dress-code-item">TOTAL BLACK</span>
+                    <span class="separator">|</span>
+                    <span class="dress-code-item">СТРАЗЫ</span>
+                    <span class="separator">|</span>
+                    <span class="dress-code-item">БЛЕСТКИ</span>
+                </p>
+            </div>
+            
+            <div class="detail-item format-item">
+                <i class="fas fa-glass-cheers"></i>
+                <h3>Формат вечеринки</h3>
+                <div class="party-format">
+                    <div class="format-line">
+                        <span class="format-text">Вкусные закуски<br/span>
+                        <span class="separator">—</span>
+                    </div>
+                    <div class="format-line">
+                        <span class="format-text">Танцы<br/span>
+                        <span class="separator">—</span>
+                    </div>
+                    <div class="format-line">
+                        <span class="format-text">Конкурсы</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+ </section>
     
     <!-- RSVP section -->
     <section class="section rsvp">
@@ -660,7 +775,7 @@
     <footer class="footer">
         <div class="container">
             <p>With love, Kate🤍. Жду каждого из вас на своём празднике!</p>
-            <p>По всем вопросам: +7 (XXX) XXX-XX-XX</p>
+            <p>По всем вопросам: +7 (926) 173-41-90</p>
         </div>
     </footer>
     
